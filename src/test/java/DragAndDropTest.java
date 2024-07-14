@@ -16,21 +16,23 @@ public class DragAndDropTest {
         Configuration.timeout = 5000;
     }
     @Test
-    void dragAndDrop() {
+    void dragAndDropTest() {
         open("/drag_and_drop");
         $("#column-a").shouldHave(text("A"));
         $("#column-b").shouldHave(text("B"));
         $("#column-a").dragAndDrop(DragAndDropOptions.to("#column-b"));
-        $$(".column").get(1).shouldHave(text("A"));
+        $("#column-a").shouldHave(text("B"));
+        $("#column-b").shouldHave(text("A"));
     }
 
     @Test
-    void anotherDragAndDrop() {
+    void anotherDragAndDropTest() {
         open("/drag_and_drop");
         $("#column-a").shouldHave(text("A"));
         $("#column-b").shouldHave(text("B"));
         actions().moveToElement($("#column-a")).clickAndHold()
                 .moveToElement($("#column-b")).release().perform();
-        $$(".column").get(1).shouldHave(text("A"));
+        $("#column-a").shouldHave(text("B"));
+        $("#column-b").shouldHave(text("A"));
     }
 }

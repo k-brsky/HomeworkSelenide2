@@ -15,7 +15,7 @@ public class GitHubTest {
         Configuration.timeout = 5000;
     }
     @Test
-    void findEnterprize() {
+    void findEnterprizeTest() {
         open("https://github.com");
         $(".Header-old").$(byText("Solutions")).hover();
         $$(".HeaderMenu-dropdown-link").findBy(text("Enterprise")).click();
